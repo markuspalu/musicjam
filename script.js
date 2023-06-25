@@ -131,25 +131,26 @@ for (var i = 1; i <= numEffects; i++) {
       audio.play();
     };
   }(sfx));
+}
 
 var intervalId;
 
-  effect.addEventListener("mousedown", function(audio) {  
-    return function() {
-      intervalId = setInterval(function() {
-        audio.currentTime = 0;
-        audio.play();
-      }, 214);
-    };
-  }(sfx));
+//   effect.addEventListener("mousedown", function(audio) {  
+//     return function() {
+//       intervalId = setInterval(function() {
+//         audio.currentTime = 0;
+//         audio.play();
+//       }, 214);
+//     };
+//   }(sfx));
  
-  document.addEventListener("mouseup", function(audio) {
-    return function() {
-      clearInterval(intervalId);
-      audio.pause();
-    };
-  }(sfx));
-}
+//   document.addEventListener("mouseup", function(audio) {
+//     return function() {
+//       clearInterval(intervalId);
+//       audio.pause();
+//     };
+//   }(sfx));
+// }
 
 function addAnimations() {
     let recAnimations = document.getElementsByClassName('recs');
