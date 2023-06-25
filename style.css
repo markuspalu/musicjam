@@ -1,0 +1,90 @@
+body {
+    background-color: azure;
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding-top: 10px;
+}
+
+.titleContainer p {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Tilt Warp', cursive;
+    font-size: 3rem;
+    letter-spacing: 2px;
+}
+
+.mainRecs {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.choiceRecs, .effectRecs{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.effectRecs {
+    padding: 0px;
+}
+
+.choice, .recs, .effect {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    border: 3px solid black;
+    margin: 10px;
+}
+
+
+.circle {
+    width: 30px;
+    cursor: move;
+}
+
+.square {
+    width: 30px;
+}
+
+.progressContainer {
+    display: flex;
+    justify-content: center;
+}
+
+progress {
+    position: absolute;
+    bottom: 19.4rem;
+    width: 98.8%;
+    height: 7.28rem;
+    z-index: -1;
+    overflow: hidden;
+    -webkit-appearance: none;
+}
+
+::-webkit-progress-bar {
+    background-color: white;
+  }
+::-webkit-progress-value {
+    background-color: lavenderblush;
+}
+
+@keyframes example {
+    0% {
+        box-shadow: 0 0 2px 2px red;
+    }
+    100% {
+        box-shadow: transparent;
+    }
+  }
+  
+  .recs.animate {
+    animation-name: example;
+    animation-duration: 856ms;
+    animation-iteration-count: infinite;
+  }
+

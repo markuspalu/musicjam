@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Tilt+Warp&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="titleContainer"><p>MJ's MusicJam</p></div>
+    <div class="mainRecs">
+        <div id="recs" class="recs recs1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="recs" class="recs recs2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="recs" class="recs recs3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="recs" class="recs recs4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="recs" class="recs recs5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+    <div class="choiceRecs">
+        <div class="choice" id="drag1border" ondrop="drop(event)" ondragover="allowDrop(event)" style="border: 3px solid red;">
+            <img src="./images/circle1.png" id="drag1" class="circle" alt="circle"
+            draggable="true" ondragstart="drag(event)">
+        </div>
+        <div class="choice" id="drag2border" ondrop="drop(event)" ondragover="allowDrop(event)" style="border: 3px solid green;">
+            <img src="./images/circle2.png" id="drag2" class="circle" alt="circle"
+            draggable="true" ondragstart="drag(event)">
+        </div>
+        <div class="choice" id="drag3border" ondrop="drop(event)" ondragover="allowDrop(event)" style="border: 3px solid yellow;">
+            <img src="./images/circle3.png" id="drag3" class="circle" alt="circle"
+            draggable="true" ondragstart="drag(event)">
+        </div>
+        <div class="choice" id="drag4border" ondrop="drop(event)" ondragover="allowDrop(event)" style="border: 3px solid blue;">
+            <img src="./images/circle4.png" id="drag4" class="circle" alt="circle"
+            draggable="true" ondragstart="drag(event)">
+        </div>
+        <div class="choice" id="drag5border" ondrop="drop(event)" ondragover="allowDrop(event)" style="border: 3px solid pink;">
+            <img src="./images/circle5.png" id="drag5" class="circle" alt="circle"
+            draggable="true" ondragstart="drag(event)">
+        </div>
+        <div class="choice" id="drag6border" ondrop="drop(event)" ondragover="allowDrop(event)" style="border: 3px solid orange;">
+            <img src="./images/circle6.png" id="drag6" class="circle" alt="circle"
+            draggable="true" ondragstart="drag(event)">
+        </div>
+        <div class="choice" id="drag7border" ondrop="drop(event)" ondragover="allowDrop(event)" style="border: 3px solid purple;">
+            <img src="./images/circle7.png" id="drag7" class="circle" alt="circle"
+            draggable="true" ondragstart="drag(event)">
+        </div>
+    </div>
+    <div class="effectRecs">
+        <div class="effect" id="effect1" style="border: 3px solid red">
+            <img src="./images/square1.png" draggable="false" id="square1" class="square" alt="square">
+        </div>
+        <div class="effect" id="effect2" style="border: 3px solid green">
+            <img src="./images/square2.png" draggable="false" id="square2" class="square" alt="square">
+        </div>
+        <div class="effect" id="effect3" style="border: 3px solid yellow">
+            <img src="./images/square3.png" draggable="false" id="square3" class="square" alt="square">
+        </div>
+        <div class="effect" id="effect4" style="border: 3px solid blue">
+            <img src="./images/square4.png" draggable="false" id="square4" class="square" alt="square">
+        </div>
+        <div class="effect" id="effect5" style="border: 3px solid pink">
+            <img src="./images/square5.png" draggable="false" id="square5" class="square" alt="square">
+        </div>
+
+    </div>
+    <div class="progressContainer">
+        <progress id="progress" value="0" min="0" max="6.6"></progress>
+    </div>
+    <audio class="audio-track" id="sound1" loop="loop" src="/sounds/drumloop.wav"></audio>
+    <audio class="audio-track" id="sound2" loop="loop" src="/sounds/darkvox.wav"></audio>
+    <audio class="audio-track" id="sound3" loop="loop" src="/sounds/mainbeat.wav"></audio>
+    <audio class="audio-track" id="sound4" loop="loop" src="/sounds/sicksynth.wav"></audio>
+    <audio class="audio-track" id="sound5" loop="loop" src="/sounds/rackup.wav"></audio>
+    <audio class="audio-track" id="sound6" loop="loop" src="/sounds/traphihat.wav"></audio>
+    <audio class="audio-track" id="sound7" loop="loop" src="/sounds/trapbeat.wav"></audio>
+
+
+    <audio id="sfx1" src="/sounds/sfx1.wav"></audio>
+    <audio id="sfx2" src="/sounds/sfx2.wav"></audio>
+    <audio id="sfx3" src="/sounds/sfx3.wav"></audio>
+    <audio id="sfx4" src="/sounds/sfx4.wav"></audio>
+    <audio id="sfx5" src="/sounds/sfx5.wav"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
