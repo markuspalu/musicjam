@@ -35,8 +35,7 @@ function drop(ev) {
 
 }
 
-
-function playTrack(colorCircle) {
+function playTrack(colorCircle) { // will run if circle is dropped somewhere
     var circle = document.getElementById(colorCircle);
     var audio;
     switch (colorCircle) {
@@ -65,21 +64,23 @@ function playTrack(colorCircle) {
 
     var progressBar = document.getElementById("progress");
     if (circle.parentNode.id == 'recs') { 
+        console.log("circle.parentNode.id == 'recs' is checked.")
         function checkBar() {
-            if (progressBar.value === 0 && circle.parentNode.id == 'recs') {
+            console.log("checkBar() is run");
+            if (progressBar.value === 0) {
                 var audioTracks = document.querySelectorAll(".audio-track");
                 for (var i = 0; i < audioTracks.length; i++) {
                     audioTracks[i].currentTime = 0;
                 }
-                clearInterval(intervalId);
-                audio.play()
+                console.log("audio is playing : " + audio.play());
+                return;
+                
                 }
+                setTimeout(checkBar, 5);
             } 
+        checkBar();
     } else {
         audio.pause();
-    }
-    if (audio.paused) {    
-        intervalId = setInterval(checkBar, 1);
     }
 }
 
@@ -92,7 +93,7 @@ function checker() {
 
     if (recs[0].hasChildNodes() || recs[1].hasChildNodes() || recs[2].hasChildNodes() || recs[3].hasChildNodes() || !recs[4].hasChildNodes()) {
             var duration = audioLength;
-            var interval = 10;
+            var interval = 50;
             var increment = interval / 1000;
             var value = 0;
 
@@ -133,7 +134,7 @@ for (var i = 1; i <= numEffects; i++) {
   }(sfx));
 }
 
-var intervalId;
+//var intervalId;
 
 //   effect.addEventListener("mousedown", function(audio) {  
 //     return function() {
