@@ -14,6 +14,7 @@ body {
     font-family: 'Tilt Warp', cursive;
     font-size: 3rem;
     letter-spacing: 2px;
+    text-shadow: 10px 10px 10px lightblue;
 }
 
 .mainRecs {
