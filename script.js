@@ -23,7 +23,7 @@ function drop(ev) {
         }
     }
 
-    if (isTargetEmpty === 0 && !isCircle && isColorM()) {
+    if (isTargetEmpty === 0 && !isCircle && isColorM()) { // add if square is empty, target not a circle, circle matches border color
         ev.target.appendChild(document.getElementById(data));
     }
 
@@ -35,7 +35,7 @@ function drop(ev) {
 
 }
 
-function playTrack(colorCircle) { // will run if circle is dropped somewhere
+function playTrack(colorCircle) { // Run if circle is dropped somewhere
     var circle = document.getElementById(colorCircle);
     var audio;
     switch (colorCircle) {
@@ -61,11 +61,12 @@ function playTrack(colorCircle) { // will run if circle is dropped somewhere
         audio = document.getElementById("sound7");
         break;
     }
-
+    
+    var recs = document.getElementsByClassName("recs");
     var progressBar = document.getElementById("progress");
     if (circle.parentNode.id == 'recs') { 
         console.log("circle.parentNode.id == 'recs' is checked.")
-        function checkBar() {
+        function checkBar() { // Checker of progress bar, synchronizer of music and creator of (past) problems
             console.log("checkBar() is run");
             if (progressBar.value === 0) {
                 var audioTracks = document.querySelectorAll(".audio-track");
@@ -73,18 +74,26 @@ function playTrack(colorCircle) { // will run if circle is dropped somewhere
                     audioTracks[i].currentTime = 0;
                 }
                 console.log("audio is playing : " + audio.play());
-                return;
                 
+                if (!recs[0].hasChildNodes() && // Ignore: Uncaught (in promise) DOMException: The play() request was interrupted by a call to pause(). 
+                    !recs[1].hasChildNodes() && 
+                    !recs[2].hasChildNodes() && 
+                    !recs[3].hasChildNodes() && 
+                    !recs[4].hasChildNodes()) {
+                  audio.pause();
                 }
-                setTimeout(checkBar, 5);
-            } 
-        checkBar();
+
+                return;
+            }
+            setTimeout(checkBar, 5);
+        } 
+        checkBar(); // Recursive call
     } else {
         audio.pause();
     }
-}
+  }
 
-function checker() {
+function checker() {  // Deals with progressbar etc.
     var recs = document.getElementsByClassName("recs");
     var progressBar = document.getElementById("progress");
     var audioLength = document.getElementById("sound1").duration;
@@ -136,8 +145,9 @@ function checker() {
 }
 
 
+// Sound effects
 
-var numEffects = 5;
+var numEffects = 5; 
 
 for (var i = 1; i <= numEffects; i++) {
   var effect = document.getElementById("effect" + i);
@@ -150,6 +160,8 @@ for (var i = 1; i <= numEffects; i++) {
     };
   }(sfx));
 }
+
+// Add animations (In future make each animation in sync with each other + music)
 
 function addAnimations() {
     let recAnimations = document.getElementsByClassName('recs');
@@ -167,27 +179,20 @@ const lowerVolume = document.getElementById('volumeDown');
 const higherVolume = document.getElementById('volumeUp');
 const pause = document.getElementById('stopMusic');
 var progressBar = document.getElementById("progress");
-let isModified = false;
 
-lowerVolume.addEventListener('click', () => {
+lowerVolume.addEventListener('click', () => { // Lower volume
   audioElements.forEach(audio => {
     audio.volume -= 0.1;
   });
 });
 
 
-higherVolume.addEventListener('click', () => {
+higherVolume.addEventListener('click', () => { // Increase volume
     audioElements.forEach(audio => {
       audio.volume += 0.1;
     });
   });
   
-pause.addEventListener('click', () => {
-    isModified = !isModified
-    console.log("paused");
-    audioElements.forEach(audio => {
-        if (isModified) {
-            location.reload();
-        }
-    });
+pause.addEventListener('click', () => { // Pause (refresh)
+    location.reload();
 });
