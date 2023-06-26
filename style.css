@@ -23,7 +23,7 @@ body {
     border: 1px solid black;
 }
 
-.choiceRecs, .effectRecs{
+.choiceRecs, .effectRecs, .volumeRecs{
     display: flex;
     justify-content: center;
     padding: 20px;
@@ -33,7 +33,7 @@ body {
     padding: 0px;
 }
 
-.choice, .recs, .effect {
+.choice, .recs, .effect, .volume {
     width: 30px;
     height: 30px;
     padding: 10px;

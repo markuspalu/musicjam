@@ -91,7 +91,12 @@ function checker() {
     
     progressBar.max = audioLength;
 
-    if (recs[0].hasChildNodes() || recs[1].hasChildNodes() || recs[2].hasChildNodes() || recs[3].hasChildNodes() || !recs[4].hasChildNodes()) {
+    if (recs[0].hasChildNodes() || 
+        recs[1].hasChildNodes() || 
+        recs[2].hasChildNodes() || 
+        recs[3].hasChildNodes() || 
+        recs[4].hasChildNodes()) {
+
             var duration = audioLength;
             var interval = 50;
             var increment = interval / 1000;
@@ -101,7 +106,14 @@ function checker() {
                 var progressInterval = setInterval(function() {
                     value += increment;
                     progressBar.value = value;
-                    if (value >= duration || !recs[0].hasChildNodes() && !recs[1].hasChildNodes() && !recs[2].hasChildNodes() && !recs[3].hasChildNodes() && !recs[4].hasChildNodes()) {
+
+                    if (value >= duration || 
+                        !recs[0].hasChildNodes() && 
+                        !recs[1].hasChildNodes() && 
+                        !recs[2].hasChildNodes() && 
+                        !recs[3].hasChildNodes() && 
+                        !recs[4].hasChildNodes()) {
+
                         value = 0;
                         clearInterval(progressInterval);
                         progressBar.value = value;
@@ -112,7 +124,12 @@ function checker() {
             return;            
         }
 
-    if (!recs[0].hasChildNodes() && !recs[1].hasChildNodes() && !recs[2].hasChildNodes() && !recs[3].hasChildNodes() && !recs[4].hasChildNodes()) {
+    if (!recs[0].hasChildNodes() && 
+        !recs[1].hasChildNodes() && 
+        !recs[2].hasChildNodes() && 
+        !recs[3].hasChildNodes() && 
+        !recs[4].hasChildNodes()) {
+
         progressBar.value = 0;
         return;
     }    
@@ -134,25 +151,6 @@ for (var i = 1; i <= numEffects; i++) {
   }(sfx));
 }
 
-//var intervalId;
-
-//   effect.addEventListener("mousedown", function(audio) {  
-//     return function() {
-//       intervalId = setInterval(function() {
-//         audio.currentTime = 0;
-//         audio.play();
-//       }, 214);
-//     };
-//   }(sfx));
- 
-//   document.addEventListener("mouseup", function(audio) {
-//     return function() {
-//       clearInterval(intervalId);
-//       audio.pause();
-//     };
-//   }(sfx));
-// }
-
 function addAnimations() {
     let recAnimations = document.getElementsByClassName('recs');
     for (let i = 0; i < recAnimations.length; i++) {
@@ -163,3 +161,33 @@ function addAnimations() {
         }
     }
 }
+
+const audioElements = document.querySelectorAll('audio');
+const lowerVolume = document.getElementById('volumeDown');
+const higherVolume = document.getElementById('volumeUp');
+const pause = document.getElementById('stopMusic');
+var progressBar = document.getElementById("progress");
+let isModified = false;
+
+lowerVolume.addEventListener('click', () => {
+  audioElements.forEach(audio => {
+    audio.volume -= 0.1;
+  });
+});
+
+
+higherVolume.addEventListener('click', () => {
+    audioElements.forEach(audio => {
+      audio.volume += 0.1;
+    });
+  });
+  
+pause.addEventListener('click', () => {
+    isModified = !isModified
+    console.log("paused");
+    audioElements.forEach(audio => {
+        if (isModified) {
+            location.reload();
+        }
+    });
+});
