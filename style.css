@@ -1,23 +1,19 @@
 body {
     background-color: azure;
+    padding-top: 30px;
 }
 
 .titleContainer {
     display: flex;
     justify-content: center;
     margin: 0;
-    padding-top: 10px;
+    padding: 10px 0px;
 }
 
-.titleContainer p {
-    font-family: 'Roboto Condensed', sans-serif;
-    font-family: 'Tilt Warp', cursive;
-    font-size: 3rem;
-    letter-spacing: 2px;
-    text-shadow: 10px 10px 10px lightblue;
-}
+
 
 .mainRecs {
+    position: relative;
     display: flex;
     justify-content: center;
     padding: 20px;
@@ -34,7 +30,7 @@ body {
     padding: 0px;
 }
 
-.choice, .recs, .effect, .volume {
+.choice, .recs, .effect, .volume, .recsTitle {
     width: 30px;
     height: 30px;
     padding: 10px;
@@ -59,8 +55,9 @@ body {
 
 progress {
     position: absolute;
-    bottom: 19.4rem;
-    width: 98.8%;
+    width: 100%;
+    bottom: 0px;
+    right: 0px;
     height: 7.28rem;
     z-index: -1;
     overflow: hidden;
@@ -87,5 +84,15 @@ progress {
     animation-name: example;
     animation-duration: 936ms;
     animation-iteration-count: infinite;
+  }
+
+  .recsTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Tilt Warp', cursive;
+    text-shadow: 3px 3px lightblue;
   }
 

@@ -10,13 +10,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Tilt+Warp&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="titleContainer"><p>MJ's MusicJam</p></div>
+    
+    <div class="titleContainer">
+        <div id="recs" class="recsTitle">M</div>
+        <div id="recs" class="recsTitle">I</div>
+        <div id="recs" class="recsTitle">X</div>
+    </div>
     <div class="mainRecs">
         <div id="recs" class="recs recs1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         <div id="recs" class="recs recs2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         <div id="recs" class="recs recs3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         <div id="recs" class="recs recs4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         <div id="recs" class="recs recs5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="progressContainer">
+            <progress id="progress" value="0" min="0" max="6.6"></progress>
+        </div>
     </div>
     <div class="choiceRecs">
         <div class="choice" id="drag1border" ondrop="drop(event)" ondragover="allowDrop(event)" style="border: 3px solid red;">
@@ -77,9 +85,6 @@
         </div>
     </div>
 
-    <div class="progressContainer">
-        <progress id="progress" value="0" min="0" max="6.6"></progress>
-    </div>
     <audio class="audio-track" id="sound1" loop="loop" src="/sounds/difourks1.wav"></audio>
     <audio class="audio-track" id="sound2" loop="loop" src="/sounds/difourks2.wav"></audio>
     <audio class="audio-track" id="sound3" loop="loop" src="/sounds/difourks3.wav"></audio>
