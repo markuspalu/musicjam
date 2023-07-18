@@ -31,8 +31,6 @@ function drop(ev) {
     console.log("current value = " + progressBar.value);
     console.log(playTrack(data));
     checker();
-    addAnimations();
-
 }
 
 function playTrack(colorCircle) { // Run if circle is dropped somewhere
@@ -66,30 +64,36 @@ function playTrack(colorCircle) { // Run if circle is dropped somewhere
     var progressBar = document.getElementById("progress");
     if (circle.parentNode.id == 'recs') { 
         console.log("circle.parentNode.id == 'recs' is checked.")
-        function checkBar() { // Checker of progress bar, synchronizer of music and creator of (past) problems
+        function checkBar() { // Checker of progress bar, synchronizer of music
             console.log("checkBar() is run");
             if (progressBar.value === 0) {
                 var audioTracks = document.querySelectorAll(".audio-track");
                 for (var i = 0; i < audioTracks.length; i++) {
                     audioTracks[i].currentTime = 0;
+                    
                 }
                 console.log("audio is playing : " + audio.play());
-                
+                addAnimations();
+              
                 if (!recs[0].hasChildNodes() && // Ignore: Uncaught (in promise) DOMException: The play() request was interrupted by a call to pause(). 
                     !recs[1].hasChildNodes() && 
                     !recs[2].hasChildNodes() && 
                     !recs[3].hasChildNodes() && 
                     !recs[4].hasChildNodes()) {
                   audio.pause();
+
                 }
 
                 return;
             }
             setTimeout(checkBar, 5);
+
         } 
         checkBar(); // Recursive call
     } else {
         audio.pause();
+        addAnimations();
+
     }
   }
 
@@ -165,8 +169,10 @@ for (var i = 1; i <= numEffects; i++) {
 
 function addAnimations() {
     let recAnimations = document.getElementsByClassName('recs');
+    let soundIDs = ["sound1", "sound2", "sound3", "sound4", "sound5", "sound6", "sound7"];
     for (let i = 0; i < recAnimations.length; i++) {
-        if (recAnimations[i].children.length > 0) {
+        if (recAnimations[i].children.length != 0 && !soundIDs[i].paused) {
+            console.log(soundIDs[i]);
             recAnimations[i].classList.add("animate");
         } else {
             recAnimations[i].classList.remove("animate");
